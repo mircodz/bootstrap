@@ -1,0 +1,11 @@
+import = [
+	"~/.config/alacritty/base16_default_dark.toml.toml",
+]
+
+
+[font]
+normal = { family = "PT Mono", style = "Regular" }
+bold = { style = "Bold" }
+italic = { style = "Italic" }
+bold_italic = { style = "Bold Italic" }
+size = 13.5

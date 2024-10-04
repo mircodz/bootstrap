@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+image=$(docker ps --format '{{ .ID }} {{ .Image }}' \
+	| fzf \
+	| awk '{print $1}')
+	
+reset
+echo "${bold}executed into container $image${normal}"
+docker exec -it $image /bin/bash

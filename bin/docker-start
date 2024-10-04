@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+image=$(docker container ls -a --format '{{ .ID }} {{ .Image }}' \
+	| fzf \
+	| awk '{print $1}')
+	
+echo "${bold}started container $image${normal}"
+docker start $image

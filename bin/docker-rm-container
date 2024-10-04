@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+images=$(docker container ls -a --format '{{ .ID }} {{ .Image }}' \
+	| fzf -m \
+	| awk '{print $1}')
+
+echo "${bold}deleting containers${normal}"
+docker container rm $images
